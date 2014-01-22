@@ -9,7 +9,7 @@ import logging
 import logging.handlers
 
 LoggingLevel = logging.DEBUG
-LOG_PATH = 'log/dns_preload.log'
+LOG_PATH = 'log/some.log'
 
 def setup_logger(logger):
     """
