@@ -15,7 +15,7 @@ import Queue
 class ThreadPool(object):
     """Handler with a fixed size pool of threads which process some tasks."""
 
-    def __init__(self, thread_count =100, is_daemon=True):
+    def __init__(self, thread_count=10, is_daemon=True):
         self.queue = Queue.Queue()
         self.thread_count = thread_count
         # 当 daemon 被设置为 True 时，如果主线程退出，那么子线程也将跟着退出
@@ -25,7 +25,7 @@ class ThreadPool(object):
         """"""
         while True:
             try:
-                args = self.queue.get()  # 默认情况下一直等到有元素
+                args = self.queue.get()
                 self.serve(args)
             except Exception as err:
                 error_track = traceback.format_exc()
