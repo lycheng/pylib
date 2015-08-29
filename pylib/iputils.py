@@ -35,12 +35,3 @@ def device_to_ip(device):
             0X8915, struct.pack('256s', device[:15]))[20:24])
     except:
         return None
-
-
-
-if __name__ == "__main__":
-    # print is_private_ip('10.0.0.0')
-    # print is_private_ip('10.255.255.255')
-    # print is_private_ip('8.8.8.8')
-    # print is_private_ip('172.31.255.254')
-    print device_to_ip('lo')

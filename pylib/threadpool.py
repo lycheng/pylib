@@ -5,7 +5,7 @@ __author__ = 'lycheng'
 __email__ = "lycheng997@gmail.com"
 __date__ = '2014-01-23'
 
-from mylog import logger
+from pylib.logger import logger
 
 from time import sleep
 import threading
