@@ -1,1 +1,11 @@
 language: python
+sudo: true
+python:
+    - "2.7"
+    - "3.4"
+
+install:
+    - pip install tox nose
+
+script:
+    - tox -e py
