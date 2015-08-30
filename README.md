@@ -1,6 +1,8 @@
 pylib
 ============
 
+![svg](https://api.travis-ci.org/repositories/lycheng/pylib.svg?branch=master)
+
 - threadpool: 使用队列实现线程池
 - mylog: 常用的 log 模块
 - iputils : 提供一些 ip 操作的小函数
