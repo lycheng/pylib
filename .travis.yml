@@ -5,7 +5,10 @@ python:
     - "3.4"
 
 install:
-    - pip install tox nose
+    - pip install tox nose redis
 
 script:
     - tox -e py
+
+services:
+    - redis-server
