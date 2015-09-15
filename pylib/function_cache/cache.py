@@ -9,6 +9,7 @@ import hashlib
 
 from . import backends
 
+
 class Cache(object):
     ''' use to control cache
     '''
@@ -38,8 +39,7 @@ class Cache(object):
                 hash_val = self.hash_kwargs(val)
             else:
                 hash_str = "%s:%s" % (str(key), val)
-                hash_val = hashlib.md5(hash_str.encode('utf-8'))\
-                        .hexdigest()
+                hash_val = hashlib.md5(hash_str.encode('utf-8')).hexdigest()
 
             hash_val = "%s:%s" % (key, hash_val)
             hash_obj.update(hash_val.encode('utf-8'))
@@ -73,19 +73,21 @@ class Cache(object):
         def decorator(f):
             @functools.wraps(f)
             def decorated_function(*args, **kwargs):
-                cache_key =  decorated_function.make_cache_key(f, *args, **kwargs)
+                cache_key = decorated_function.\
+                    make_cache_key(f, *args, **kwargs)
                 ret = self.cache.get(cache_key)
                 if ret:
                     return ret
                 ret = f(*args, **kwargs)
                 self.cache.set(cache_key, ret,
-                        timeout=decorated_function.cache_timeout)
+                               timeout=decorated_function.cache_timeout)
                 return ret
 
             def make_cache_key(f, *args, **kwargs):
                 f_name = f.__name__
-                cache_key = "%s:%s:%s" % \
-                        (f_name, self.hash_args(args), self.hash_kwargs(kwargs))
+                cache_key = "%s:%s:%s" % (f_name,
+                                          self.hash_args(args),
+                                          self.hash_kwargs(kwargs))
                 return cache_key
 
             decorated_function.cache_timeout = timeout

@@ -9,10 +9,12 @@ try:
 except:
     import pickle
 
+
 def redis(config):
     ''' 初始化 redis cache
     '''
     return RedisCache(config)
+
 
 class RedisCache(object):
 
@@ -23,8 +25,9 @@ class RedisCache(object):
         db = int(config.get('CACHE_REDIS_DB', '1'))
 
         import redis
-        self.backend = redis.StrictRedis(host=host, port=port, db=db, \
-                password=passwd)
+
+        self.backend = redis.StrictRedis(host=host, port=port, db=db,
+                                         password=passwd)
 
     def set(self, key, value, timeout=None):
         value = pickle.dumps(value)

@@ -1,1 +1,3 @@
-from .cache import Cache
+from pylib.function_cache.cache import Cache
+
+__all__ = ['Cache']

@@ -5,12 +5,13 @@ __author__ = 'lycheng'
 __email__ = "lycheng997@gmail.com"
 __date__ = '2014-01-23'
 
-from pylib.logger import logger
-
 from time import sleep
 import threading
 import traceback
 import Queue
+
+from pylib.logger import logger
+
 
 class ThreadPool(object):
     """Handler with a fixed size pool of threads which process some tasks."""
@@ -57,6 +58,7 @@ class ThreadPool(object):
         """
         raise NotImplementedError()
 
+
 class __Example(ThreadPool):
 
     def run(self):
@@ -70,4 +72,3 @@ class __Example(ThreadPool):
 if __name__ == "__main__":
     ex = __Example()
     ex.start()
-

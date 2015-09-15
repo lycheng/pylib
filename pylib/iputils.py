@@ -9,8 +9,9 @@ import struct
 import socket
 import fcntl
 
+
 def ip_to_int(ip):
-    return struct.unpack("!I",socket.inet_aton(ip))[0]
+    return struct.unpack("!I", socket.inet_aton(ip))[0]
 
 
 def int_to_ip(num):
@@ -28,10 +29,14 @@ def is_private_ip(ip):
         return True
     return False
 
+
 def device_to_ip(device):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        return socket.inet_ntoa(fcntl.ioctl(s.fileno(),
-            0X8915, struct.pack('256s', device[:15]))[20:24])
+        return socket.inet_ntoa(
+            fcntl.ioctl(
+                s.fileno(),
+                0X8915,
+                struct.pack('256s', device[:15]))[20:24])
     except:
         return None
