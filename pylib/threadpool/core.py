@@ -1,16 +1,15 @@
-#!/usr/bin/python2.7
-# -*- coding: utf-8 -*-
-
-__author__ = 'lycheng'
-__email__ = "lycheng997@gmail.com"
-__date__ = '2014-01-23'
+from pylib import IS_PY2
 
 from time import sleep
 import threading
 import traceback
-import Queue
 
 from pylib.logger import logger
+
+if IS_PY2:
+    import Queue
+else:
+    import queue as Queue
 
 
 class ThreadPool(object):
@@ -19,7 +18,6 @@ class ThreadPool(object):
     def __init__(self, thread_count=10, is_daemon=True):
         self.queue = Queue.Queue()
         self.thread_count = thread_count
-        # 当 daemon 被设置为 True 时，如果主线程退出，那么子线程也将跟着退出
         self.is_daemon = is_daemon
 
     def serveThread(self):
@@ -34,12 +32,12 @@ class ThreadPool(object):
                 logger.error(errmsg)
 
     def serve(self, args):
-        """ 实际的处理函数
+        """ main handler function
         """
         raise NotImplementedError()
 
     def start(self):
-        """ 启动多个线程去监听队列
+        """ use mulit thread to listen queue
         """
         for i in range(self.thread_count):
             try:
@@ -54,7 +52,7 @@ class ThreadPool(object):
         self.run()
 
     def run(self):
-        """ 往队列塞数据的函数
+        """ to produce data and push to the queue
         """
         raise NotImplementedError()
 
@@ -68,6 +66,7 @@ class __Example(ThreadPool):
 
     def serve(self, num):
         logger.info(num)
+
 
 if __name__ == "__main__":
     ex = __Example()

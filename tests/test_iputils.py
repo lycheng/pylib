@@ -1,13 +1,7 @@
-#!/usr/bin/python2.7
-# -*- coding: utf-8 -*-
-
-__author__ = 'lycheng'
-__email__ = "lycheng997@gmail.com"
-__date__ = '2015-08-27'
+import unittest
 
 from pylib import iputils
 
-import unittest
 
 class TestPylibIpUtils(unittest.TestCase):
 

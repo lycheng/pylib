@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-
-__author__ = 'lycheng'
-__email__ = "lycheng997@gmail.com"
-__date__ = '2015-08-31'
-
 import functools
 import hashlib
 

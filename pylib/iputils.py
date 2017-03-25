@@ -1,10 +1,3 @@
-#!/usr/bin/python2.7
-# -*- coding: utf-8 -*-
-
-__author__ = 'lycheng'
-__email__ = "lycheng997@gmail.com"
-__date__ = '2014-01-23'
-
 import struct
 import socket
 import fcntl
