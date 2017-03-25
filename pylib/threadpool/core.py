@@ -4,7 +4,7 @@ from time import sleep
 import threading
 import traceback
 
-from pylib.logger import logger
+from pylib import logger as log
 
 if IS_PY2:
     import Queue
@@ -15,10 +15,14 @@ else:
 class ThreadPool(object):
     """Handler with a fixed size pool of threads which process some tasks."""
 
-    def __init__(self, thread_count=10, is_daemon=True):
+    def __init__(self, thread_count=10, is_daemon=True, logger=None):
         self.queue = Queue.Queue()
         self.thread_count = thread_count
         self.is_daemon = is_daemon
+
+        if not logger:
+            logger = log.get_default_logger()
+        self.logger = logger
 
     def serveThread(self):
         """"""
@@ -29,7 +33,7 @@ class ThreadPool(object):
             except Exception as err:
                 error_track = traceback.format_exc()
                 errmsg = '%s\n%s' % (err.message, error_track)
-                logger.error(errmsg)
+                self.logger.error(errmsg)
 
     def serve(self, args):
         """ main handler function
@@ -47,7 +51,7 @@ class ThreadPool(object):
             except Exception as err:
                 error_track = traceback.format_exc()
                 errmsg = '%s\n%s' % (err.message, error_track)
-                logger.error(errmsg)
+                self.logger.error(errmsg)
 
         self.run()
 
@@ -65,7 +69,7 @@ class __Example(ThreadPool):
             sleep(1)
 
     def serve(self, num):
-        logger.info(num)
+        self.logger.info(num)
 
 
 if __name__ == "__main__":

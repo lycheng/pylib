@@ -2,23 +2,26 @@ import logging
 import logging.handlers
 
 LoggingLevel = logging.DEBUG
-LOG_PATH = 'log/status.log'
 
 
-def setup_logger(logger):
+def get_default_logger(name="default"):
+    """ return a default logger for stdout
+
+    Args:
+        name: string, for name of logger
+
+    Returns:
+        logger: logger
     """
-    Set up a specific logger - logger
-    """
+    logger = logging.getLogger('default')
+
+    print(logger)
+
     logger.setLevel(LoggingLevel)
-    log_path = LOG_PATH
-    handler = logging.handlers.TimedRotatingFileHandler(log_path,
-                                                        when='d',
-                                                        interval=1)
+    handler = logging.handlers.StreamHandler()
     handler.setLevel(LoggingLevel)
     formatter = logging.Formatter('[%(asctime)s] %(levelname)s %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
-
-logger = logging.getLogger('error')
-setup_logger(logger)
+    return logger
