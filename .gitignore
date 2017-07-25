@@ -4,3 +4,5 @@ log/
 build/
 dist/
 .tox/
+
+pyx.egg-info/
