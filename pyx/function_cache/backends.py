@@ -1,4 +1,4 @@
-from pylib import IS_PY2
+from pyx import IS_PY2
 
 if IS_PY2:
     import cPickle as pickle

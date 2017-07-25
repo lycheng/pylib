@@ -17,7 +17,7 @@ class Cache(object):
             raise ValueError("`config` must be an instance of dict or None")
 
         config.setdefault('CACHE_DEFAULT_TIMEOUT', 300)
-        config.setdefault('CACHE_KEY_PREFIX', 'pylib_cache_')
+        config.setdefault('CACHE_KEY_PREFIX', 'pyx_cache_')
         config.setdefault('CACHE_TYPE', 'redis')
 
         return config

@@ -1,6 +1,6 @@
 import unittest
 
-from pylib import iputils
+from pyx import iputils
 
 
 class TestPylibIpUtils(unittest.TestCase):

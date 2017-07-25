@@ -3,5 +3,4 @@
 log/
 build/
 dist/
-pylib.egg-info/
 .tox/

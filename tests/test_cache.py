@@ -1,7 +1,7 @@
 from time import time, sleep
 import unittest
 
-from pylib.function_cache import Cache
+from pyx.function_cache import Cache
 
 
 class TestFunCache(unittest.TestCase):

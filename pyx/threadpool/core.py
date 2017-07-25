@@ -1,10 +1,10 @@
-from pylib import IS_PY2
+from pyx import IS_PY2
 
 from time import sleep
 import threading
 import traceback
 
-from pylib import logger as log
+from pyx import logger as log
 
 if IS_PY2:
     import Queue
